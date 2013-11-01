@@ -5,9 +5,9 @@ __author__ = "esemi"
 
 from scipy.spatial.distance import pdist
 from scipy.cluster import hierarchy
-from shared import get_data
-import sys
 import matplotlib.pyplot as plt
+
+from shared import get_data
 
 
 def hierarchy_draw(Z, labels, level):
@@ -21,6 +21,7 @@ if __name__ == '__main__':
     names, data = get_data()
 
     dist = pdist(data, 'euclidean')
+    plt.hist(dist, 500, color='green', alpha=0.5)
     Z = hierarchy.linkage(dist, method='average')
 
-    hierarchy_draw(Z, names, 4.)
+    hierarchy_draw(Z, names, .35)

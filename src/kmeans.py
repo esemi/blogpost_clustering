@@ -1,7 +1,7 @@
 #! /usr/bin/env python
 # -*- coding: utf-8 -*-
 
-__author__="esemi"
+__author__ = "esemi"
 
 import numpy
 from scipy.cluster import *
@@ -47,7 +47,7 @@ def kmeans_draw(clusters):
 if __name__ == '__main__':
     names, data = get_data()
 
-    centroids = vq.kmeans(numpy.array(data), 6, iter=100)[0]
+    centroids = vq.kmeans(numpy.array(data), 6, iter=200)[0]
     K_res = kmeans_export(centroids, data, names)
 
     kmeans_draw(K_res)
