@@ -3,12 +3,14 @@
 
 __author__ = "esemi"
 
+from collections import deque
+
 import numpy
 from scipy.cluster import *
 from scipy.spatial.distance import cdist
-from collections import deque
 from mpl_toolkits.mplot3d import Axes3D
 import matplotlib.pyplot as plt
+
 from shared import get_data
 
 
@@ -47,7 +49,7 @@ def kmeans_draw(clusters):
 if __name__ == '__main__':
     names, data = get_data()
 
-    centroids = vq.kmeans(numpy.array(data), 6, iter=200)[0]
+    centroids = vq.kmeans(numpy.array(data), 5, iter=200)[0]
     K_res = kmeans_export(centroids, data, names)
 
     kmeans_draw(K_res)
