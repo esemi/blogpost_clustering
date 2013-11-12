@@ -24,4 +24,4 @@ if __name__ == '__main__':
     plt.hist(dist, 500, color='green', alpha=0.5)
     Z = hierarchy.linkage(dist, method='average')
 
-    hierarchy_draw(Z, names, .35)
+    hierarchy_draw(Z, names, .25)

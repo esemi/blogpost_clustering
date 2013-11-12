@@ -31,13 +31,12 @@ def graph_mst(dist, labels, limit):
     for x in xrange(len_x - 1):
         for y in xrange(x + 1, len_x):
             w = dq.popleft()
-            s.add_edge(labels[x], labels[y], weight=w, length=w)
+            s.add_edge(labels[x], labels[y], weight=w)
 
     mst = nx.minimum_spanning_tree(s)
+    plt.hist([edge[2]['weight'] for edge in mst.edges_iter(data=True)], 100, color='red', alpha=0.3)
+
     edges = [edge for edge in mst.edges_iter(data=True) if edge[2]['weight'] <= limit]
-
-    plt.hist([edge[2]['weight'] for edge in edges], 30, color='red', alpha=0.5)
-
     r.add_edges_from(edges)
     del s
 
@@ -48,7 +47,7 @@ if __name__ == '__main__':
 
     dist = pdist(data, 'euclidean')
 
-    mst, g = graph_mst(dist, names, 0.06)
+    mst, g = graph_mst(dist, names, 0.05)
 
     graph_draw(mst)
     graph_draw(g)
