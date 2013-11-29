@@ -30,8 +30,7 @@ def graph_mst(dist, labels, limit):
     len_x = len(labels)
     for x in xrange(len_x - 1):
         for y in xrange(x + 1, len_x):
-            w = dq.popleft()
-            s.add_edge(labels[x], labels[y], weight=w)
+            s.add_edge(labels[x], labels[y], weight=dq.popleft())
 
     mst = nx.minimum_spanning_tree(s)
     plt.hist([edge[2]['weight'] for edge in mst.edges_iter(data=True)], 100, color='red', alpha=0.3)
@@ -53,4 +52,5 @@ if __name__ == '__main__':
     graph_draw(g)
 
     plt.show()
+
 
